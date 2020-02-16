@@ -56,11 +56,11 @@ describe('Nunjucks', function () {
     const nunjucksService = mid.getService('mid:nunjucks')
 
     let html = await nunjucksService.render('test-plugin:views/pages/test.html', { var: 'nunjucks' })
+
     expect(html).to.include('<title>Test</title>', 'Missing title !')
     expect(html).to.include('<h1>test nunjucks</h1>', 'Missing h1 !')
 
     html = await nunjucksService.render('test-plugin:views/pages/test-rw.html', { var: 'nunjucks' })
-    console.log(html)
     expect(html).to.include('<title>Test rw</title>', 'Missing title !')
     expect(html).to.include('<h1>test rw nunjucks</h1>', 'Missing h1 !')
   })

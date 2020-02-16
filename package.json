@@ -15,8 +15,9 @@
   },
   "repository": {},
   "dependencies": {
-    "@midgar/service": "git+https://gitea.midgar.io/Midgar/service.git",
+    "@midgar/i18n": "git+https://gitea.midgar.io/Midgar/i18n.git",
     "@midgar/midgar": "git+https://gitea.midgar.io/Midgar/midgar.git",
+    "@midgar/service": "git+https://gitea.midgar.io/Midgar/service.git",
     "@midgar/utils": "^1.0.0-alpha.1.5",
     "nunjucks": "^3.2.0"
   },

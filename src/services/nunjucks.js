@@ -68,6 +68,10 @@ class MidgarLoader {
  */
 const serviceName = 'mid:nunjucks'
 
+const dependencies = [
+  'mid:i18n'
+]
+
 /**
  * NunjucksService class
  */
@@ -75,9 +79,10 @@ class NunjucksService {
   /**
    * Constructor
    *
-   * @param {Midgar} mid Midgar instance
+   * @param {Midgar}      mid         Midgar instance
+   * @param {I18nService} i18nService I18n service
    */
-  constructor (mid) {
+  constructor (mid, i18nService) {
     /**
      * Plugin config
      * @var {Midgar}}
@@ -103,6 +108,15 @@ class NunjucksService {
      * @var {nunjucks.Environment}
      */
     this.environement = new nunjucks.Environment(new MidgarLoader(this.mid))
+
+    /**
+     * Add Translate filer
+     */
+    this.environement.addFilter('__', function (msg, ...args) {
+      if (!msg) throw new Error('Invalid message !')
+      const data = this.getVariables()
+      return i18nService.__(msg, data._locale, ...args)
+    })
   }
 
   /**
@@ -110,10 +124,17 @@ class NunjucksService {
    *
    * @param {string} filePath File path, must be like plugin-name:file-path
    * @param {object} data     Template data
+   * @param {object} locale   Locale code for translation filter
+   *
+   * @return {Promise<string>}
    */
-  async render (filePath, data) {
+  async render (filePath, data = {}, locale = null) {
+    // Get nunjumks template
     const template = await this._getTemplate(filePath)
     return new Promise((resolve, reject) => {
+      // Add locale to data object
+      data._locale = locale
+      // Render template
       template.render(data, function (err, html) {
         if (err) {
           reject(err)
@@ -151,5 +172,6 @@ class NunjucksService {
 
 export default {
   name: serviceName,
-  service: NunjucksService
+  service: NunjucksService,
+  dependencies
 }

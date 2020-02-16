@@ -4,6 +4,7 @@
     "path": "../../.."
   }, 
   "@midgar/service": true,
+  "@midgar/i18n": true,
   "test-plugin": { "local": true },
   "test-plugin-2": { "local": true }
 }
