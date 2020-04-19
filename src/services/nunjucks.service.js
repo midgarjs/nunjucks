@@ -10,7 +10,7 @@ class MidgarLoader {
   /**
    * @param {Midgar} mid Midgar instance
    */
-  constructor (mid) {
+  constructor(mid) {
     this.mid = mid
     this.async = true
   }
@@ -22,7 +22,7 @@ class MidgarLoader {
    *
    * @returns {boolean}
    */
-  isRelative (filePath) {
+  isRelative(filePath) {
     return !path.isAbsolute(filePath)
   }
 
@@ -34,7 +34,7 @@ class MidgarLoader {
    *
    * @returns {string} Absolute file path
    */
-  resolve (parentPath, filePath) {
+  resolve(parentPath, filePath) {
     const parts = parentPath.split(':')
     if (parts.length !== 2) throw new Error('Invalid parent path !')
     return parts[0] + ':' + path.resolve('/' + path.dirname(parts[1]), filePath).slice(1)
@@ -48,7 +48,7 @@ class MidgarLoader {
    *
    * @return {Promise<void>}
    */
-  async getSource (filePath, callback) {
+  async getSource(filePath, callback) {
     try {
       const src = await this.mid.pm.readFile(filePath)
       const file = {
@@ -68,9 +68,7 @@ class MidgarLoader {
  */
 const serviceName = 'mid:nunjucks'
 
-const dependencies = [
-  'mid:i18n'
-]
+const dependencies = ['mid:i18n']
 
 /**
  * NunjucksService class
@@ -82,7 +80,7 @@ class NunjucksService {
    * @param {Midgar}      mid         Midgar instance
    * @param {I18nService} i18nService I18n service
    */
-  constructor (mid, i18nService) {
+  constructor(mid, i18nService) {
     /**
      * Plugin config
      * @var {Midgar}}
@@ -128,7 +126,7 @@ class NunjucksService {
    *
    * @return {Promise<string>}
    */
-  async render (filePath, data = {}, locale = null) {
+  async render(filePath, data = {}, locale = null) {
     // Get nunjumks template
     const template = await this._getTemplate(filePath)
     return new Promise((resolve, reject) => {
@@ -153,7 +151,7 @@ class NunjucksService {
    * @returns {Promise<Template>}
    * @private
    */
-  _getTemplate (filePath) {
+  _getTemplate(filePath) {
     return new Promise((resolve, reject) => {
       if (this.config.cache && this._templates[filePath]) resolve(this._templates[filePath])
       else {

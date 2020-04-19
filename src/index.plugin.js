@@ -6,3 +6,5 @@ import { Plugin } from '@midgar/midgar'
 class NunjucksPlugin extends Plugin {}
 
 export default NunjucksPlugin
+
+export const dependencies = ['@midgar/service', '@midgar/i18n']
