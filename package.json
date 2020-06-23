@@ -1,6 +1,6 @@
 {
   "name": "@midgar/nunjucks",
-  "version": "1.0.0-alpha.1.0",
+  "version": "1.0.0-beta.1.0",
   "description": "A Midgar plugin to add Twig template",
   "main": "src/index.plugin.js",
   "scripts": {
@@ -13,10 +13,10 @@
   },
   "repository": {},
   "dependencies": {
-    "@midgar/i18n": "git+https://gitea.midgar.io/Midgar/i18n.git",
-    "@midgar/midgar": "git+https://gitea.midgar.io/Midgar/midgar.git",
-    "@midgar/service": "git+https://gitea.midgar.io/Midgar/service.git",
-    "@midgar/utils": "^1.0.0-alpha.1.5",
+    "@midgar/i18n": "^1.0.0-beta.1.0",
+    "@midgar/midgar": "^1.0.0-beta.1.0",
+    "@midgar/service": "^1.0.0-beta.1.0",
+    "@midgar/utils": "^1.0.1",
     "nunjucks": "^3.2.1"
   },
   "devDependencies": {
@@ -24,9 +24,9 @@
     "chai": "^4.2.0",
     "chai-as-promised": "^7.1.1",
     "dirty-chai": "^2.0.1",
-    "eslint": "^6.8.0",
+    "eslint": "^7.3.1",
     "eslint-config-standard": "^14.1.1",
-    "eslint-plugin-import": "^2.20.2",
+    "eslint-plugin-import": "^2.21.2",
     "eslint-plugin-node": "^11.1.0",
     "eslint-plugin-promise": "^4.2.1",
     "eslint-plugin-sonarjs": "^0.5.0",
@@ -34,9 +34,9 @@
     "esm": "^3.2.25",
     "ink-docstrap": "^1.3.2",
     "jsdoc": "^3.6.4",
-    "mocha": "^7.1.1",
+    "mocha": "^8.0.1",
     "mocha-sonarqube-reporter": "^1.0.1",
-    "nyc": "^15.0.1"
+    "nyc": "^15.1.0"
   },
   "author": "Metais Fabien",
   "license": "MIT"
